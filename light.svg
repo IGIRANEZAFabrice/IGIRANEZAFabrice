@@ -1,0 +1,692 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610" viewBox="0 0 1180 610">
+<defs>
+  <!-- Accent Gradient (blue -> cyan -> emerald) -->
+  <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#2563EB"/>
+    <stop offset="50%" stop-color="#06B6D4"/>
+    <stop offset="100%" stop-color="#10B981"/>
+  </linearGradient>
+
+  <!-- Matrix Code Rain Shifting Gradient (Light theme - White and Gray) -->
+  <linearGradient id="matrixRainGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" stop-color="#FFFFFF"/>
+    <stop offset="30%" stop-color="#94A3B8"/>
+    <stop offset="70%" stop-color="#64748B" stop-opacity="0.8"/>
+    <stop offset="100%" stop-color="#64748B" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- ASCII Portrait Blue -> Cyan Gradient (used as backup/shadow glow) -->
+  <linearGradient id="asciiGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#2563EB"/>
+    <stop offset="100%" stop-color="#06B6D4"/>
+  </linearGradient>
+
+  <!-- Card Border Gradient -->
+  <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="rgba(37, 99, 235, 0.25)"/>
+    <stop offset="50%" stop-color="rgba(6, 182, 212, 0.25)"/>
+    <stop offset="100%" stop-color="rgba(16, 185, 129, 0.25)"/>
+  </linearGradient>
+
+  <!-- Background Radial Glows (Very subtle for Light mode) -->
+  <radialGradient id="glowPurple" cx="15%" cy="20%" r="50%">
+    <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.04"/>
+    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glowBlue" cx="85%" cy="80%" r="60%">
+    <stop offset="0%" stop-color="#60A5FA" stop-opacity="0.03"/>
+    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+  </radialGradient>
+  <radialGradient id="glowEmerald" cx="50%" cy="50%" r="45%">
+    <stop offset="0%" stop-color="#34D399" stop-opacity="0.02"/>
+    <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+  </radialGradient>
+
+  <!-- Moving Scanline Sweep (Softer for Light mode) -->
+  <linearGradient id="scanGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" stop-color="#06B6D4" stop-opacity="0"/>
+    <stop offset="48%" stop-color="#06B6D4" stop-opacity="0.005"/>
+    <stop offset="50%" stop-color="#06B6D4" stop-opacity="0.08"/>
+    <stop offset="52%" stop-color="#06B6D4" stop-opacity="0.005"/>
+    <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
+  </linearGradient>
+
+  <!-- Static Scanline Grid Pattern -->
+  <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+    <rect width="4" height="1" fill="#000000" opacity="0.008"/>
+  </pattern>
+
+  <!-- Noise Filter -->
+  <filter id="noiseFilter" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="1" stitchTiles="stitch"/>
+    <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.015 0"/>
+  </filter>
+
+  <!-- Smooth ASCII Mask Reveal -->
+  <mask id="revealMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1180" height="610">
+    <rect x="0" y="0" width="1180" height="0" fill="#FFFFFF">
+      <animate attributeName="height" from="0" to="580" dur="2.4s" begin="0.2s" fill="freeze" calcMode="spline" keySplines="0.25 0.1 0.25 1"/>
+    </rect>
+  </mask>
+
+  <!-- ASCII Portrait Mask: The falling Matrix rain will flow ONLY through the ASCII text shapes -->
+  <mask id="asciiMask" maskUnits="userSpaceOnUse" x="0" y="0" width="1180" height="610">
+    <!-- Solid black background hides everything outside the ASCII portrait -->
+    <rect x="20" y="20" width="430" height="495" fill="#000000"/>
+    <!-- Solid white ASCII characters are drawn as the mask openings -->
+    <g>
+      <animateTransform attributeName="transform" type="translate" values="0 0; 0 -5; 0 0" dur="6s" repeatCount="indefinite"/>
+      <text class="ascii-mask">
+<tspan x="30" y="70.00" xml:space="preserve">                                   .:--+*****=-:.</tspan>
+<tspan x="30" y="78.30" xml:space="preserve">                                -*%####@@@@@####%+=.</tspan>
+<tspan x="30" y="86.60" xml:space="preserve">                            .-+*#@@#@@@@@@@@@@##@##%%+:</tspan>
+<tspan x="30" y="94.90" xml:space="preserve">                          :=%@@@@@@@@@@@@@@@@@@@@@@@###%=</tspan>
+<tspan x="30" y="103.20" xml:space="preserve">                        .+#@@@@#%%%*************%%%####@#+:</tspan>
+<tspan x="30" y="111.50" xml:space="preserve">                       .*@@@@@%+++++++++++++++++++++++%@@@@=</tspan>
+<tspan x="30" y="119.80" xml:space="preserve">                       *@@@@#*+++++++++++++++++++++++==+%@@#=</tspan>
+<tspan x="30" y="128.10" xml:space="preserve">                      :#@@@%++++++++++++========+++++++==*##%.</tspan>
+<tspan x="30" y="136.40" xml:space="preserve">                      -###%*++++++++++++=======+++++++++==*##:</tspan>
+<tspan x="30" y="144.70" xml:space="preserve">                      -###%*+++++++++++=========+++++++++=+##=</tspan>
+<tspan x="30" y="153.00" xml:space="preserve">                      =@#%*+*********++==========++*****+==%#=</tspan>
+<tspan x="30" y="161.30" xml:space="preserve">                      =##%+++*%***+****++======++******%*+=*#-</tspan>
+<tspan x="30" y="169.60" xml:space="preserve">                      -@#%+++*++++++*+**+++==+++**++++++++=%#:</tspan>
+<tspan x="30" y="177.90" xml:space="preserve">                      :%@%++++*%%*##*=****++++***+*#%+**++=%+</tspan>
+<tspan x="30" y="186.20" xml:space="preserve">                     +**#*++++++*+**+++**++==++*+++*+++*++=%=.</tspan>
+<tspan x="30" y="194.50" xml:space="preserve">                    .*++*+++++======++++++++++++++==++==++=+*+</tspan>
+<tspan x="30" y="202.80" xml:space="preserve">                     +++**+++++====++++*++====++++=======+=++-</tspan>
+<tspan x="30" y="211.10" xml:space="preserve">                     -*+**+**++++++==+++++=-====+==++++++++*+.</tspan>
+<tspan x="30" y="219.40" xml:space="preserve">                      -++%****+++++==++***++++*+++++++++++++:</tspan>
+<tspan x="30" y="227.70" xml:space="preserve">                       .:-*******+++++****++****++++++++++=:</tspan>
+<tspan x="30" y="236.00" xml:space="preserve">                          -********%*++++++++++*****+++++-</tspan>
+<tspan x="30" y="244.30" xml:space="preserve">                          .+******%%%**+++++++++**%*++++=.</tspan>
+<tspan x="30" y="252.60" xml:space="preserve">                           :*******+***+======+++*+*++++.</tspan>
+<tspan x="30" y="260.90" xml:space="preserve">                            +***********+++++++++++++*+.</tspan>
+<tspan x="30" y="269.20" xml:space="preserve">                            =**%%%%*******+++**+++++**+.</tspan>
+<tspan x="30" y="277.50" xml:space="preserve">                            :***%##**++++===++++++*#*++</tspan>
+<tspan x="30" y="285.80" xml:space="preserve">                            .**++%@@#%%**+*****%*#@#*++:.</tspan>
+<tspan x="30" y="294.10" xml:space="preserve">                            -+*+++*#@@@@@####@@@#%*+++++**-:.</tspan>
+<tspan x="30" y="302.40" xml:space="preserve">                         .-%%+*+++++*%%%####@##%*++++++++%###%%+:.</tspan>
+<tspan x="30" y="310.70" xml:space="preserve">                      .-%#@%+***++++++++++++*++++++++++++*@@@@@@#@#%*=-:.</tspan>
+<tspan x="30" y="319.00" xml:space="preserve">                 .:=*%@@@@@%*****++++++++++++++++++++++++%@#@@@@#@@@@@@##%+-:.</tspan>
+<tspan x="30" y="327.30" xml:space="preserve">            .:=+%#@@@@@@@@@#****++++++++++++++++++++++++*@@@@@@@#@@@@@@@@@@@@#%*+=-:.</tspan>
+<tspan x="30" y="335.60" xml:space="preserve">      .:-=*%@@@@@@@@@@@@@@@@#**++++++++++++++++++++++++*#@#@@@@@@@@@@@@@@@@@@@@@@@@@#</tspan>
+<tspan x="30" y="343.90" xml:space="preserve"> .:=*%##@@@@@@@@@@@@@@@@@@@@@@%*+=++++++++++++++++++++*#@#@@@@@@@@@@@@#@@@@@@@@@@@@@@</tspan>
+<tspan x="30" y="352.20" xml:space="preserve">%#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*++++=======++++**%##@@@@@@@@@@###@@##@@@@@@@@@@@@@@</tspan>
+<tspan x="30" y="360.50" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##%%%%*%%%##@@@@@####@@@#@####@@##@@@@@@@#@@@@@##</tspan>
+<tspan x="30" y="368.80" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@##@@@@@@@@@@@@@@@#######@@@######@###@@@@#@@####@@###</tspan>
+<tspan x="30" y="377.10" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@#@##@@@@@@@@@@@@#############@###@##@@@##########@###@@@####@####</tspan>
+<tspan x="30" y="385.40" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@@@@@@##@#################@################@@##########</tspan>
+<tspan x="30" y="393.70" xml:space="preserve">@@@@@@@@@@@@@@@@@#@@@@@@@@@###@@@#@######################################@@###@######</tspan>
+<tspan x="30" y="402.00" xml:space="preserve">@@@@@@@@@@@@@@@@@@##@@@@#@#@############################################@@###########</tspan>
+<tspan x="30" y="410.30" xml:space="preserve">@@@@@@@@@#@@@@##@@@@@@#@@##@############################################@@##########@</tspan>
+<tspan x="30" y="418.60" xml:space="preserve">@@@@@@@@@#@@####@@@###@@#@##############################################@@#####@@###@</tspan>
+<tspan x="30" y="426.90" xml:space="preserve">@@@@@@@@@#######@@@@#@@##@###@#@########################################@######@@###@</tspan>
+<tspan x="30" y="435.20" xml:space="preserve">@@@#@@@@@####@@#@@@@@@@@@@@@#@@@##############################################@@@###@</tspan>
+      </text>
+    </g>
+  </mask>
+
+  <!-- Typing Animation Clip Paths -->
+  <clipPath id="typeClip1">
+    <rect x="520" y="80" width="0" height="35">
+      <animate attributeName="width" values="0;210;210;0;0" keyTimes="0;0.08125;0.21875;0.2375;1" dur="16s" repeatCount="indefinite"/>
+    </rect>
+  </clipPath>
+  <clipPath id="typeClip2">
+    <rect x="520" y="80" width="0" height="35">
+      <animate attributeName="width" values="0;0;140;140;0;0" keyTimes="0;0.25;0.33125;0.46875;0.4875;1" dur="16s" repeatCount="indefinite"/>
+    </rect>
+  </clipPath>
+  <clipPath id="typeClip3">
+    <rect x="520" y="80" width="0" height="35">
+      <animate attributeName="width" values="0;0;130;130;0;0" keyTimes="0;0.50;0.58125;0.71875;0.7375;1" dur="16s" repeatCount="indefinite"/>
+    </rect>
+  </clipPath>
+  <clipPath id="typeClip4">
+    <rect x="520" y="80" width="0" height="35">
+      <animate attributeName="width" values="0;0;230;230;0;0" keyTimes="0;0.75;0.83125;0.96875;0.9875;1" dur="16s" repeatCount="indefinite"/>
+    </rect>
+  </clipPath>
+
+  <style>
+    .ascii {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      font-size: 7.2px;
+      fill: url(#asciiGrad);
+      letter-spacing: -0.2px;
+      line-height: 8.3px;
+      opacity: 0.80; /* Highly visible behind the Matrix rain for shape definition */
+    }
+    .ascii-mask {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+      font-size: 7.2px;
+      fill: #FFFFFF;
+      letter-spacing: -0.2px;
+      line-height: 8.3px;
+      font-weight: bold;
+    }
+    .term-label {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 12px;
+      fill: #64748B;
+      letter-spacing: 0.5px;
+    }
+    .scan-label {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 10px;
+      fill: #EF4444;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .panel-title {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 11px;
+      fill: #94A3B8;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .greeting {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 24px;
+      fill: #0F172A;
+      font-weight: 800;
+    }
+    .prompt-symbol {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 18px;
+      fill: #10B981;
+      font-weight: bold;
+    }
+    .role-text {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 18px;
+      font-weight: bold;
+      fill: url(#accentGrad);
+    }
+    .detail-key {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 14px;
+      fill: #2563EB;
+      font-weight: bold;
+    }
+    .detail-dots {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 14px;
+      fill: #E2E8F0;
+    }
+    .detail-val {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 14px;
+      fill: #475569;
+    }
+    .detail-label {
+      font-family: 'SFMono-Regular', Consolas, monospace;
+      font-size: 14px;
+      fill: #10B981;
+      font-weight: bold;
+    }
+    .pill {
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .pill:hover {
+      transform: scale(1.08);
+      filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.35));
+    }
+    .pill:hover rect {
+      stroke: #2563EB;
+      fill: #F8FAFC;
+    }
+    .pill-text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 12px;
+      fill: #334155;
+      font-weight: 600;
+    }
+    .social-icon {
+      transform-box: fill-box;
+      transform-origin: center;
+      transition: all 0.3s ease;
+      fill: #94A3B8;
+      cursor: pointer;
+    }
+    .social-icon:hover {
+      transform: scale(1.2);
+      fill: #2563EB;
+      filter: drop-shadow(0 0 6px rgba(37, 99, 235, 0.45));
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blink {
+      animation: blink 0.8s infinite;
+    }
+  </style>
+</defs>
+
+<!-- Background Layer -->
+<rect width="1180" height="610" fill="#FFFFFF"/>
+<rect width="1180" height="610" fill="url(#glowPurple)"/>
+<rect width="1180" height="610" fill="url(#glowBlue)"/>
+<rect width="1180" height="610" fill="url(#glowEmerald)"/>
+<rect width="1180" height="610" filter="url(#noiseFilter)" opacity="0.3"/>
+<rect width="1180" height="610" fill="url(#scanlines)"/>
+
+<!-- Floating Particles (Subtle) -->
+<g opacity="0.5">
+  <circle cx="100" cy="150" r="1.5" fill="#3B82F6">
+    <animate attributeName="opacity" values="0.1;0.6;0.1" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="150;120;150" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="400" cy="500" r="1.2" fill="#8B5CF6">
+    <animate attributeName="opacity" values="0.1;0.7;0.1" dur="8s" begin="1s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="500;475;500" dur="8s" begin="1s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="850" cy="200" r="2.0" fill="#10B981">
+    <animate attributeName="opacity" values="0.05;0.5;0.05" dur="7s" begin="2s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="200;175;200" dur="7s" begin="2s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="1100" cy="450" r="1.5" fill="#3B82F6">
+    <animate attributeName="opacity" values="0.1;0.6;0.1" dur="5s" begin="3s" repeatCount="indefinite"/>
+    <animate attributeName="cy" values="450;420;450" dur="5s" begin="3s" repeatCount="indefinite"/>
+  </circle>
+</g>
+
+<!-- Main Header Bar -->
+<g id="titlebar">
+  <rect x="4" y="4" width="1172" height="34" rx="15" fill="#F8FAFC" fill-opacity="0.9"/>
+  <circle cx="24" cy="21" r="5" fill="#EF4444"/>
+  <circle cx="42" cy="21" r="5" fill="#F59E0B"/>
+  <circle cx="60" cy="21" r="5" fill="#10B981"/>
+  <text x="590" y="26" text-anchor="middle" class="term-label">igiraneza@fabrice ~ % ./profile.sh --live</text>
+  <circle cx="1120" cy="21" r="4.5" fill="#10B981">
+    <animate attributeName="opacity" values="1;0.4;1" dur="1.5s" repeatCount="indefinite"/>
+  </circle>
+  <text x="1131" y="25" class="scan-label" style="fill: #10B981;">LIVE</text>
+</g>
+
+<!-- Panels Layout -->
+<g transform="translate(0, 42)">
+  <!-- LEFT PANEL: ASCII art portrait -->
+  <g>
+    <!-- Card Background (Glassmorphism Light) -->
+    <rect x="20" y="20" width="430" height="495" rx="14" fill="#F8FAFC" fill-opacity="0.7" stroke="rgba(15,23,42,0.06)" stroke-width="1.2" style="filter: drop-shadow(0 4px 12px rgba(15,23,42,0.03));"/>
+    <text x="36" y="42" class="panel-title">VISUAL.MAP</text>
+    
+    <!-- Group with Mask: Matrix rain flows ONLY inside the shape of the ASCII portrait (White and Gray palette) -->
+    <g mask="url(#asciiMask)">
+    <text x="36.0" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.772" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      0001010100001011001
+      <animate attributeName="y" values="-250; 745" dur="4.8s" begin="-5.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="45.1" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.651" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      0101010110010011011
+      <animate attributeName="y" values="-250; 745" dur="4.7s" begin="-5.6s" repeatCount="indefinite"/>
+    </text>
+    <text x="57.1" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.774" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      01110001000000110111011110101
+      <animate attributeName="y" values="-250; 745" dur="3.1s" begin="-2.3s" repeatCount="indefinite"/>
+    </text>
+    <text x="75.1" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.731" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      1011111111100111011001101
+      <animate attributeName="y" values="-250; 745" dur="5.4s" begin="-5.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="88.2" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.665" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      00101111100110010001101110010
+      <animate attributeName="y" values="-250; 745" dur="3.4s" begin="-3.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="99.2" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.784" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      00000001110000101000101001
+      <animate attributeName="y" values="-250; 745" dur="5.3s" begin="-5.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="111.2" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.770" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      000001101011111010110110
+      <animate attributeName="y" values="-250; 745" dur="3.4s" begin="-1.8s" repeatCount="indefinite"/>
+    </text>
+    <text x="124.2" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.895" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      011011001001101001100000
+      <animate attributeName="y" values="-250; 745" dur="5.2s" begin="-5.4s" repeatCount="indefinite"/>
+    </text>
+    <text x="137.3" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.743" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      0001001100100100110100
+      <animate attributeName="y" values="-250; 745" dur="4.4s" begin="-4.9s" repeatCount="indefinite"/>
+    </text>
+    <text x="146.3" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.888" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      110001001011001010000011
+      <animate attributeName="y" values="-250; 745" dur="4.2s" begin="-4.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="161.3" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.737" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      11000111110000011110000111
+      <animate attributeName="y" values="-250; 745" dur="3.2s" begin="-1.4s" repeatCount="indefinite"/>
+    </text>
+    <text x="180.4" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.662" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      10010101000010000010000110010
+      <animate attributeName="y" values="-250; 745" dur="4.7s" begin="-1.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="192.4" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.828" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      10110011000110110000001
+      <animate attributeName="y" values="-250; 745" dur="3.8s" begin="-2.2s" repeatCount="indefinite"/>
+    </text>
+    <text x="200.4" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.772" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      1000101110001010001101111
+      <animate attributeName="y" values="-250; 745" dur="5.1s" begin="-0.8s" repeatCount="indefinite"/>
+    </text>
+    <text x="219.5" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.824" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      01100111010010101110100011
+      <animate attributeName="y" values="-250; 745" dur="5.2s" begin="-1.0s" repeatCount="indefinite"/>
+    </text>
+    <text x="227.5" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.729" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      0101111100010001110111
+      <animate attributeName="y" values="-250; 745" dur="5.3s" begin="-5.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="240.5" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.794" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      01111010110110001111
+      <animate attributeName="y" values="-250; 745" dur="5.3s" begin="-0.9s" repeatCount="indefinite"/>
+    </text>
+    <text x="258.5" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.695" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      00010010001101111011101
+      <animate attributeName="y" values="-250; 745" dur="5.0s" begin="-0.2s" repeatCount="indefinite"/>
+    </text>
+    <text x="265.6" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.719" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      011011000101001010111101
+      <animate attributeName="y" values="-250; 745" dur="5.1s" begin="-4.9s" repeatCount="indefinite"/>
+    </text>
+    <text x="282.6" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.796" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      001000100100100001100
+      <animate attributeName="y" values="-250; 745" dur="4.1s" begin="-2.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="292.6" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.682" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      000010000101101100101101110011
+      <animate attributeName="y" values="-250; 745" dur="5.0s" begin="-3.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="310.7" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.690" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      011110100011110011
+      <animate attributeName="y" values="-250; 745" dur="3.6s" begin="-2.8s" repeatCount="indefinite"/>
+    </text>
+    <text x="319.7" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.781" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      01010111100010011100000111
+      <animate attributeName="y" values="-250; 745" dur="4.6s" begin="-2.4s" repeatCount="indefinite"/>
+    </text>
+    <text x="334.7" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.878" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      0100100111001000101
+      <animate attributeName="y" values="-250; 745" dur="5.1s" begin="-4.6s" repeatCount="indefinite"/>
+    </text>
+    <text x="348.8" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.657" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      100101011010111011011000000111
+      <animate attributeName="y" values="-250; 745" dur="4.9s" begin="-0.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="358.8" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.790" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      10101011000000101000100111
+      <animate attributeName="y" values="-250; 745" dur="4.4s" begin="-0.2s" repeatCount="indefinite"/>
+    </text>
+    <text x="374.8" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.816" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      010000000110101000110011011
+      <animate attributeName="y" values="-250; 745" dur="3.4s" begin="-0.8s" repeatCount="indefinite"/>
+    </text>
+    <text x="384.8" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.812" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      111101011100100110110011001
+      <animate attributeName="y" values="-250; 745" dur="4.0s" begin="-5.6s" repeatCount="indefinite"/>
+    </text>
+    <text x="393.9" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.709" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      101001110001101111100011110
+      <animate attributeName="y" values="-250; 745" dur="4.1s" begin="-5.5s" repeatCount="indefinite"/>
+    </text>
+    <text x="410.9" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="9px" fill="url(#matrixRainGrad)" opacity="0.665" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      01110010110111111101110
+      <animate attributeName="y" values="-250; 745" dur="5.2s" begin="-4.1s" repeatCount="indefinite"/>
+    </text>
+    <text x="423.9" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="10px" fill="url(#matrixRainGrad)" opacity="0.867" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      010010000101100001100011111110
+      <animate attributeName="y" values="-250; 745" dur="5.5s" begin="-0.7s" repeatCount="indefinite"/>
+    </text>
+    <text x="441.0" y="-250" font-family="'SFMono-Regular', Consolas, monospace" font-size="11px" fill="url(#matrixRainGrad)" opacity="0.773" style="writing-mode: vertical-rl; text-anchor: start; font-weight: bold; letter-spacing: 2px;">
+      000011101011001011
+      <animate attributeName="y" values="-250; 745" dur="4.3s" begin="-5.9s" repeatCount="indefinite"/>
+    </text>
+    </g>
+
+    <!-- Subtle ghost outline of the ASCII behind the rain to maintain shape structure -->
+    <g mask="url(#revealMask)">
+      <g>
+        <animateTransform attributeName="transform" type="translate" values="0 0; 0 -5; 0 0" dur="6s" repeatCount="indefinite"/>
+        <text class="ascii">
+<tspan x="30" y="70.00" xml:space="preserve">                                   .:--+*****=-:.</tspan>
+<tspan x="30" y="78.30" xml:space="preserve">                                -*%####@@@@@####%+=.</tspan>
+<tspan x="30" y="86.60" xml:space="preserve">                            .-+*#@@#@@@@@@@@@@##@##%%+:</tspan>
+<tspan x="30" y="94.90" xml:space="preserve">                          :=%@@@@@@@@@@@@@@@@@@@@@@@###%=</tspan>
+<tspan x="30" y="103.20" xml:space="preserve">                        .+#@@@@#%%%*************%%%####@#+:</tspan>
+<tspan x="30" y="111.50" xml:space="preserve">                       .*@@@@@%+++++++++++++++++++++++%@@@@=</tspan>
+<tspan x="30" y="119.80" xml:space="preserve">                       *@@@@#*+++++++++++++++++++++++==+%@@#=</tspan>
+<tspan x="30" y="128.10" xml:space="preserve">                      :#@@@%++++++++++++========+++++++==*##%.</tspan>
+<tspan x="30" y="136.40" xml:space="preserve">                      -###%*++++++++++++=======+++++++++==*##:</tspan>
+<tspan x="30" y="144.70" xml:space="preserve">                      -###%*+++++++++++=========+++++++++=+##=</tspan>
+<tspan x="30" y="153.00" xml:space="preserve">                      =@#%*+*********++==========++*****+==%#=</tspan>
+<tspan x="30" y="161.30" xml:space="preserve">                      =##%+++*%***+****++======++******%*+=*#-</tspan>
+<tspan x="30" y="169.60" xml:space="preserve">                      -@#%+++*++++++*+**+++==+++**++++++++=%#:</tspan>
+<tspan x="30" y="177.90" xml:space="preserve">                      :%@%++++*%%*##*=****++++***+*#%+**++=%+</tspan>
+<tspan x="30" y="186.20" xml:space="preserve">                     +**#*++++++*+**+++**++==++*+++*+++*++=%=.</tspan>
+<tspan x="30" y="194.50" xml:space="preserve">                    .*++*+++++======++++++++++++++==++==++=+*+</tspan>
+<tspan x="30" y="202.80" xml:space="preserve">                     +++**+++++====++++*++====++++=======+=++-</tspan>
+<tspan x="30" y="211.10" xml:space="preserve">                     -*+**+**++++++==+++++=-====+==++++++++*+.</tspan>
+<tspan x="30" y="219.40" xml:space="preserve">                      -++%****+++++==++***++++*+++++++++++++:</tspan>
+<tspan x="30" y="227.70" xml:space="preserve">                       .:-*******+++++****++****++++++++++=:</tspan>
+<tspan x="30" y="236.00" xml:space="preserve">                          -********%*++++++++++*****+++++-</tspan>
+<tspan x="30" y="244.30" xml:space="preserve">                          .+******%%%**+++++++++**%*++++=.</tspan>
+<tspan x="30" y="252.60" xml:space="preserve">                           :*******+***+======+++*+*++++.</tspan>
+<tspan x="30" y="260.90" xml:space="preserve">                            +***********+++++++++++++*+.</tspan>
+<tspan x="30" y="269.20" xml:space="preserve">                            =**%%%%*******+++**+++++**+.</tspan>
+<tspan x="30" y="277.50" xml:space="preserve">                            :***%##**++++===++++++*#*++</tspan>
+<tspan x="30" y="285.80" xml:space="preserve">                            .**++%@@#%%**+*****%*#@#*++:.</tspan>
+<tspan x="30" y="294.10" xml:space="preserve">                            -+*+++*#@@@@@####@@@#%*+++++**-:.</tspan>
+<tspan x="30" y="302.40" xml:space="preserve">                         .-%%+*+++++*%%%####@##%*++++++++%###%%+:.</tspan>
+<tspan x="30" y="310.70" xml:space="preserve">                      .-%#@%+***++++++++++++*++++++++++++*@@@@@@#@#%*=-:.</tspan>
+<tspan x="30" y="319.00" xml:space="preserve">                 .:=*%@@@@@%*****++++++++++++++++++++++++%@#@@@@#@@@@@@##%+-:.</tspan>
+<tspan x="30" y="327.30" xml:space="preserve">            .:=+%#@@@@@@@@@#****++++++++++++++++++++++++*@@@@@@@#@@@@@@@@@@@@#%*+=-:.</tspan>
+<tspan x="30" y="335.60" xml:space="preserve">      .:-=*%@@@@@@@@@@@@@@@@#**++++++++++++++++++++++++*#@#@@@@@@@@@@@@@@@@@@@@@@@@@#</tspan>
+<tspan x="30" y="343.90" xml:space="preserve"> .:=*%##@@@@@@@@@@@@@@@@@@@@@@%*+=++++++++++++++++++++*#@#@@@@@@@@@@@@#@@@@@@@@@@@@@@</tspan>
+<tspan x="30" y="352.20" xml:space="preserve">%#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%*++++=======++++**%##@@@@@@@@@@###@@##@@@@@@@@@@@@@@</tspan>
+<tspan x="30" y="360.50" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@##%%%%*%%%##@@@@@####@@@#@####@@##@@@@@@@#@@@@@##</tspan>
+<tspan x="30" y="368.80" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@##@@@@@@@@@@@@@@@#######@@@######@###@@@@#@@####@@###</tspan>
+<tspan x="30" y="377.10" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@#@##@@@@@@@@@@@@#############@###@##@@@##########@###@@@####@####</tspan>
+<tspan x="30" y="385.40" xml:space="preserve">@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@@@@@@##@#################@################@@##########</tspan>
+<tspan x="30" y="393.70" xml:space="preserve">@@@@@@@@@@@@@@@@@#@@@@@@@@@###@@@#@######################################@@###@######</tspan>
+<tspan x="30" y="402.00" xml:space="preserve">@@@@@@@@@@@@@@@@@@##@@@@#@#@############################################@@###########</tspan>
+<tspan x="30" y="410.30" xml:space="preserve">@@@@@@@@@#@@@@##@@@@@@#@@##@############################################@@##########@</tspan>
+<tspan x="30" y="418.60" xml:space="preserve">@@@@@@@@@#@@####@@@###@@#@##############################################@@#####@@###@</tspan>
+<tspan x="30" y="426.90" xml:space="preserve">@@@@@@@@@#######@@@@#@@##@###@#@########################################@######@@###@</tspan>
+<tspan x="30" y="435.20" xml:space="preserve">@@@#@@@@@####@@#@@@@@@@@@@@@#@@@##############################################@@@###@</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+
+  <!-- RIGHT PANEL: Information Terminal (Clean, no Matrix rain background) -->
+  <g>
+    <!-- Card Background (Glassmorphism Light) -->
+    <rect x="470" y="20" width="690" height="495" rx="14" fill="#F8FAFC" fill-opacity="0.7" stroke="rgba(15,23,42,0.06)" stroke-width="1.2" style="filter: drop-shadow(0 4px 12px rgba(15,23,42,0.03));"/>
+    <text x="486" y="42" class="panel-title">SYSTEM.INFO</text>
+
+    <!-- Terminal Content Group -->
+    <g transform="translate(0, 20)">
+      
+      <!-- Greeting -->
+      <text x="500" y="70" class="greeting">Hi 👋, I'm Fabrice</text>
+
+      <!-- Typing Animation Carousel -->
+      <g>
+        <text x="500" y="105" class="prompt-symbol">❯ </text>
+        
+        <!-- Phrase 1 -->
+        <g clip-path="url(#typeClip1)">
+          <text x="520" y="105" class="role-text">Full Stack Developer</text>
+        </g>
+        <!-- Phrase 2 -->
+        <g clip-path="url(#typeClip2)">
+          <text x="520" y="105" class="role-text">UI/UX Engineer</text>
+        </g>
+        <!-- Phrase 3 -->
+        <g clip-path="url(#typeClip3)">
+          <text x="520" y="105" class="role-text">AI Enthusiast</text>
+        </g>
+        <!-- Phrase 4 -->
+        <g clip-path="url(#typeClip4)">
+          <text x="520" y="105" class="role-text">Open Source Contributor</text>
+        </g>
+
+        <!-- Typing Cursor -->
+        <rect y="88" width="8" height="20" fill="#2563EB" class="cursor-blink">
+          <animate attributeName="x" 
+                   values="520; 730; 730; 520; 520; 660; 660; 520; 520; 650; 650; 520; 520; 750; 750; 520; 520" 
+                   keyTimes="0; 0.08125; 0.21875; 0.2375; 0.25; 0.33125; 0.46875; 0.4875; 0.50; 0.58125; 0.71875; 0.7375; 0.75; 0.83125; 0.96875; 0.9875; 1" 
+                   dur="16s" 
+                   repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <!-- Details List -->
+      <g>
+        <!-- Row 1: Location -->
+        <g>
+          <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.2s" fill="freeze"/>
+          <text x="500" y="145">
+            <tspan class="detail-key">Location</tspan>
+            <tspan class="detail-dots"> .................... </tspan>
+            <tspan class="detail-val">Kigali, Rwanda</tspan>
+          </text>
+        </g>
+
+        <!-- Row 2: Education -->
+        <g>
+          <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.4s" fill="freeze"/>
+          <text x="500" y="175">
+            <tspan class="detail-key">Education</tspan>
+            <tspan class="detail-dots"> ................... </tspan>
+            <tspan class="detail-val">Self-Taught &amp; Practical Experience</tspan>
+          </text>
+        </g>
+
+        <!-- Row 3: Focus -->
+        <g>
+          <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.6s" fill="freeze"/>
+          <text x="500" y="205">
+            <tspan class="detail-key">Current Focus</tspan>
+            <tspan class="detail-dots"> ............... </tspan>
+            <tspan class="detail-val">Fullstack Web &amp; AI Integration</tspan>
+          </text>
+        </g>
+
+        <!-- Row 4: Portfolio -->
+        <g>
+          <animate attributeName="opacity" values="0;1" dur="0.4s" begin="0.8s" fill="freeze"/>
+          <text x="500" y="235">
+            <tspan class="detail-key">Portfolio</tspan>
+            <tspan class="detail-dots"> ................... </tspan>
+            <tspan class="detail-val">github.com/IGIRANEZAFabrice</tspan>
+          </text>
+        </g>
+
+        <!-- Row 5: Email -->
+        <g>
+          <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.0s" fill="freeze"/>
+          <text x="500" y="265">
+            <tspan class="detail-key">Email</tspan>
+            <tspan class="detail-dots"> ....................... </tspan>
+            <tspan class="detail-val">igiranezafabrice@gmail.com</tspan>
+          </text>
+        </g>
+      </g>
+
+      <!-- Skills Section -->
+      <g>
+        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.2s" fill="freeze"/>
+        <!-- Separator -->
+        <text x="500" y="305">
+          <tspan class="detail-label">- Skills &amp; Tech</tspan>
+          <tspan class="detail-dots"> ————————————————————————————————————-—-</tspan>
+        </text>
+      </g>
+
+      <!-- Skills Pills -->
+      <g transform="translate(0, 320)">
+        <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.4s" fill="freeze"/>
+        
+        <!-- Row 1 Pills -->
+        <g class="pill" transform="translate(500, 0)">
+          <rect width="65" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="32.5" y="18" text-anchor="middle" class="pill-text">React</text>
+        </g>
+        <g class="pill" transform="translate(575, 0)">
+          <rect width="75" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="37.5" y="18" text-anchor="middle" class="pill-text">Next.js</text>
+        </g>
+        <g class="pill" transform="translate(660, 0)">
+          <rect width="75" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="37.5" y="18" text-anchor="middle" class="pill-text">Node.js</text>
+        </g>
+        <g class="pill" transform="translate(745, 0)">
+          <rect width="95" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="47.5" y="18" text-anchor="middle" class="pill-text">TypeScript</text>
+        </g>
+        <g class="pill" transform="translate(850, 0)">
+          <rect width="80" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="40" y="18" text-anchor="middle" class="pill-text">Tailwind</text>
+        </g>
+        <g class="pill" transform="translate(940, 0)">
+          <rect width="70" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="35" y="18" text-anchor="middle" class="pill-text">Python</text>
+        </g>
+
+        <!-- Row 2 Pills -->
+        <g class="pill" transform="translate(500, 38)">
+          <rect width="70" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="35" y="18" text-anchor="middle" class="pill-text">Docker</text>
+        </g>
+        <g class="pill" transform="translate(580, 38)">
+          <rect width="85" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="42.5" y="18" text-anchor="middle" class="pill-text">Postgres</text>
+        </g>
+        <g class="pill" transform="translate(675, 38)">
+          <rect width="60" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="30" y="18" text-anchor="middle" class="pill-text">AWS</text>
+        </g>
+        <g class="pill" transform="translate(745, 38)">
+          <rect width="55" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="27.5" y="18" text-anchor="middle" class="pill-text">Git</text>
+        </g>
+        <g class="pill" transform="translate(810, 38)">
+          <rect width="70" height="28" rx="14" class="pill-bg" fill="#F1F5F9" stroke="rgba(15,23,42,0.08)" stroke-width="1"/>
+          <text x="35" y="18" text-anchor="middle" class="pill-text">Figma</text>
+        </g>
+      </g>
+
+      <!-- Connect Section -->
+      <g>
+        <animate attributeName="opacity" values="0;1" dur="0.4s" begin="1.6s" fill="freeze"/>
+        <!-- Separator -->
+        <text x="500" y="420">
+          <tspan class="detail-label">- Connect</tspan>
+          <tspan class="detail-dots"> ——————————————————————————————————————————</tspan>
+        </text>
+      </g>
+
+      <!-- Social Icons Group -->
+      <g>
+        <animate attributeName="opacity" values="0;1" dur="0.5s" begin="1.8s" fill="freeze"/>
+        <svg class="social-icon" x="500" y="435" width="20" height="20" viewBox="0 0 24 24"><a href="https://github.com/IGIRANEZAFabrice" target="_blank"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></a></svg><svg class="social-icon" x="535" y="435" width="20" height="20" viewBox="0 0 24 24"><a href="https://linkedin.com/in/igiraneza-fabrice" target="_blank"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></a></svg><svg class="social-icon" x="570" y="435" width="20" height="20" viewBox="0 0 24 24"><a href="https://instagram.com/igirvneza" target="_blank"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></a></svg><svg class="social-icon" x="605" y="435" width="20" height="20" viewBox="0 0 24 24"><a href="https://github.com/IGIRANEZAFabrice" target="_blank"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm1 17.93c3.95-.49 7-3.85 7-7.93 0-.62-.08-1.21-.21-1.79L15 15v1c0 1.1-.9 2-2 2v1.93zm-9-4c-.64-1.11-1-2.4-1-4 0-3.77 2.78-6.89 6.41-7.39C9.17 5.17 9 5.58 9 6c0 1.1.9 2 2 2h2v2c0 .55.45 1 1 1h2v2h-6c-.55 0-1 .45-1 1v3H4z"/></a></svg>
+      </g>
+
+    </g>
+  </g>
+</g>
+
+<!-- Moving Scanline Sweep -->
+<rect x="0" y="-80" width="1180" height="80" fill="url(#scanGrad)" opacity="0.4" style="mix-blend-mode: screen;">
+  <animateTransform attributeName="transform" type="translate" from="0 -80" to="0 690" dur="5s" repeatCount="indefinite"/>
+</rect>
+
+<!-- Card Glowing Border (Softer for Light mode) -->
+<rect x="4" y="4" width="1172" height="602" rx="15" fill="none" stroke="url(#borderGrad)" stroke-width="1.5" opacity="0.6"/>
+</svg>
